@@ -1,0 +1,50 @@
+"BillingDetails data"
+type BillingDetails {
+    "The Customer Name"
+    customerName: String
+    
+    "The Customer Nit"
+    nit:String
+
+    "The Billing Address"
+    address:String
+}
+input BillingDetailsInput {
+    "The Customer Name"
+    customerName: String
+    
+    "The Customer Nit"
+    nit:String
+
+    "The Billing Address"
+    address:String
+}
+input SetBillingDetailsOnCartInput {
+    "Billing details"
+    billing: BillingDetailsInput!
+
+    "The cart to set billing details on"
+    cartId: ID!
+
+    "The token for the cart, required if it is an anonymous cart"
+    cartToken: String
+}
+"The response from the `setShippingAddressOnCart` mutation"
+type SetBillingDetailsOnCartPayload {
+  "The updated Cart"
+  cart: Cart!
+
+  "The same string you sent with the mutation params, for matching mutation calls with their responses"
+  clientMutationId: String
+}
+extend type Checkout{
+    "Billing data collected"
+    billing: BillingDetails
+}
+extend type Mutation {
+    "Set the billing details for a checkout data collected"
+    setBillingDetailsOnCart(
+        "Mutation input"
+        input: SetBillingDetailsOnCartInput!
+    ): SetBillingDetailsOnCartPayload!
+}
