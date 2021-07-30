@@ -48,3 +48,10 @@ extend type Mutation {
         input: SetBillingDetailsOnCartInput!
     ): SetBillingDetailsOnCartPayload!
 }
+
+extend input OrderInput {
+    billing: BillingDetailsInput
+}
+extend type Order {
+    billing: BillingDetails
+}
