@@ -13,13 +13,25 @@ export const BillingDetails = new SimpleSchema({
         type: String,
         optional: true
     },
-    nit:{
+    nit: {
         type: String,
         max: 9,
         optional: true
     },
-    address:{
+    address: {
         type: String,
-        optional:true
+        optional: true
+    },
+    country: {
+        type: String,
+        optional: true
+    },
+    depto: {
+        type: String,
+        optional: true
+    },
+    city: {
+        type: String,
+        optional: true
     }
 });
